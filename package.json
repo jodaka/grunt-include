@@ -1,12 +1,9 @@
 {
   "name": "grunt-include",
-  "description": "In-code includes",
-  "version": "0.1.0",
+  "description": "In-code includes for GruntJS",
+  "version": "0.1.1",
   "homepage": "https://github.com/aquilae/grunt-include",
-  "author": {
-    "name": "Ilya Kozlov",
-    "email": "upsnake@gmail.com"
-  },
+  "author": "Ilya Kozlov <upsnake@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/aquilae/grunt-include.git"
@@ -21,17 +18,26 @@
     }
   ],
   "main": "grunt.js",
-  "bin": "bin/grunt-include",
+  "bin": {
+    "grunt-include": "bin/grunt-include"
+  },
   "engines": {
     "node": "*"
   },
   "scripts": {
     "test": "grunt test"
   },
+  "dependencies": {
+    "grunt": "~0.3.17"
+  },
   "devDependencies": {
     "grunt": "~0.3.17"
   },
   "keywords": [
     "gruntplugin"
-  ]
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "license": "MIT"
 }
