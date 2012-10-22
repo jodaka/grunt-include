@@ -144,9 +144,9 @@ module.exports = function(grunt) {
                         return;
                     }
 
-                    var rx = new RegExp(format, 'g'),
+                    var rx = new RegExp('^(.*?)' + format, 'gm'),
                         result = data.replace(
-                            rx, function (match, path) {
+                            rx, function (match, prefix, path) {
                                 var p = grunt.helper(
                                         'resolve_include',
                                         src, include, path
@@ -161,7 +161,11 @@ module.exports = function(grunt) {
                                     errors.push(result.err);
                                     return match;
                                 }
-                                return result.data;
+                                return prefix + result.data.replace(
+                                    /([\r]?\n)/g, function (lf) {
+                                        return lf + prefix;
+                                    }
+                                );
                             }
                         );
 
@@ -208,7 +212,7 @@ module.exports = function(grunt) {
             for (var i = 0, len = inc.length; i < len; ++i) {
                 var item = inc[i],
                     p = (item === './') ?
-                        path.join(path.basename(src), file) :
+                        path.join(path.dirname(src), file) :
                         path.join(item, file);
                 if (fs.existsSync(p)) {
                     return p;
