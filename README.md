@@ -1,6 +1,6 @@
 # grunt-include
 
-In-code includes
+In-code includes task for GruntJS build system
 
 ## Getting Started
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-include`
